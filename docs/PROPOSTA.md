@@ -5,7 +5,7 @@ Guia de pequenas descobertas urbanas. Público: estudantes e moradores que quere
 ## Escolhas desta implementação
 Expo SDK58, React Native, TypeScript e Expo Router: aplicação mobile criada do zero e uma experiência desktop própria. Comparadas uma landing page somente web, uma comunidade social com backend e um guia local, a escolha é um guia funcional com dados curados e passaporte privado. Essa escolha mantém a avaliação mobile e permite concluir todos os fluxos sem exigir contas ou serviços pagos. Comunidade pública e sincronização poderão ser uma evolução; não são apresentadas como recursos existentes.
 
-Identidade: nome Desvio, papel creme, verde profundo, detalhes lima e terracota; títulos editoriais serifados em Cormorant Garamond, interface DM Sans, fotografia grande e mapa. A imagem de abertura é uma composição ilustrativa; imagens de referência dos cartões não devem ser confundidas com fotografias documentais dos locais. Créditos explícitos.
+Identidade: nome Desvio, papel creme, verde profundo, detalhes lima e terracota; títulos editoriais serifados em Cormorant Garamond, interface DM Sans, fotografia grande e mapa. A imagem de abertura é uma composição ilustrativa; os cartões usam fotografias reais de arquivo dos locais, com autoria e licenças explícitas na tela Créditos.
 
 ## Fluxos de ponta a ponta
 1. Descobrir: explorar a curadoria, pesquisar por nome/bairro e combinar categoria com entrada gratuita.

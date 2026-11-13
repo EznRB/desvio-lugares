@@ -2,9 +2,12 @@
 
 ## Documento dos quatro pilares
 
-**Disciplina:** Mobile  
-**Turma/professor:** preencher  
-**Data:** 13/11/2026  
+**Disciplina:** Mobile
+
+**Turma/professor:** preencher
+
+**Data:** 13/11/2026
+
 **Equipe:** identificação pendente
 
 Projeto acadêmico original de guia pessoal de São Paulo, com Expo e React Native. Campos de equipe e QA físico precisam de fatos fornecidos pelos alunos; não são resultados presumidos. A responsabilidade pelo código, inclusive apoio de IA, é da equipe.
@@ -124,7 +127,7 @@ O diferencial pretendido é um fluxo pessoal curto, em português, com curadoria
 | Recursos nativos | 15% | GPS, câmera, haptics e persistência demonstrados em aparelho |
 | GitHub/README | 10% | Instruções, galeria real, .gitignore e commits reais do grupo |
 
-Prazo do enunciado: 07/12 às 23h59; confirmar o ano com o professor. Entregar link de repositório acessível e PDF. Publicação ainda não comprovada por este documento; destinos previstos constam no README.
+Prazo do enunciado: 07/12 às 23h59; confirmar o ano com o professor. Entregar link de repositório acessível e PDF. Publicação confirmada: [aplicação HTTPS](https://desvio-lugares.vercel.app) e [repositório público](https://github.com/EznRB/desvio-lugares). Rotas de início, lugar, roteiro, passaporte e créditos responderam HTTP 200; o fluxo remoto aprovou 30 verificações, sem erros de página. Evidências e versão verificada em VERIFICACAO.md. Participação real da equipe e hardware físico continuam pendentes.
 
 - [ ] Preencher integrantes, matrículas, GitHub e responsabilidades reais.
 - [ ] Validar aparelho físico conforme VALIDACAO-MOBILE.md.

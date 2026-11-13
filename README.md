@@ -42,7 +42,7 @@ Capturas reais produzidas pelo QA de navegador; podem ser substituídas pela ver
 ![Mobile - captura de navegador](docs/screenshots/mobile.png)
 ![Catálogo mobile](docs/screenshots/mobile-catalog.png)
 
-**Destinos previstos, sem aprovação de publicação neste documento:** [GitHub EznRB/desvio-lugares](https://github.com/EznRB/desvio-lugares) e [desvio-lugares.vercel.app](https://desvio-lugares.vercel.app). Conferir acesso, HTTPS e fluxo na implantação final antes de anunciar publicação.
+**Publicado:** [Abrir Desvio](https://desvio-lugares.vercel.app) · [GitHub EznRB/desvio-lugares](https://github.com/EznRB/desvio-lugares). HTTPS, rotas diretas e 30 verificações de navegador aprovados na implantação. Evidências e limites em [VERIFICACAO.md](docs/VERIFICACAO.md).
 
 ## Arquitetura e dependências
 
@@ -67,4 +67,4 @@ Não existe backend nem autenticação: o uso é individual e os dados ficam no 
 | Preencher | Preencher | Preencher URL | Preencher |
 | Preencher | Preencher | Preencher URL | Preencher |
 
-Ajustar ao grupo real. IA apoiou a implementação/documentação; os alunos precisam revisar, testar e explicar o código. Não fabricar nomes, autoria ou commits. A camada mobile foi concebida para este projeto, sem reaproveitar a do Arena. Antes da entrega, validar aparelho físico, preencher equipe, confirmar publicação, inserir evidências e revisar o PDF.
+Ajustar ao grupo real. IA apoiou a implementação/documentação; os alunos precisam revisar, testar e explicar o código. Não fabricar nomes, autoria ou commits. A camada mobile foi concebida para este projeto, sem reaproveitar a do Arena. Antes da entrega, validar aparelho físico, preencher equipe, inserir evidências do aparelho e revisar o PDF.
