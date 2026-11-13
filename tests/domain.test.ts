@@ -7,7 +7,7 @@ import {
   filterPlaces,
   parseData,
 } from "../src/domain.ts";
-import { places } from "../src/data/places.ts";
+import { legacyPlaces as places } from "../src/data/places.ts";
 
 test("search ignores accents/case and combines category and free filters without reordering", () => {
   assert.equal(

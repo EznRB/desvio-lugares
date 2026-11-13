@@ -1,4 +1,5 @@
-export const credits = [
+import { coastalPhotos } from "./coastal-photos";
+const legacyCredits = [
   {
     place: "Vila Itororó",
     author: "EricaAzzellini",
@@ -45,4 +46,12 @@ export const credits = [
     source:
       "https://commons.wikimedia.org/wiki/File:Museu_Lasar_Segall,_jardim_1.jpg",
   },
+];
+
+export const credits = [
+  ...coastalPhotos.map((photo) => ({
+    ...photo,
+    place: `${photo.place ?? "Baía de Caraguatatuba (contextual)"} · ${photo.city}`,
+  })),
+  ...legacyCredits,
 ];

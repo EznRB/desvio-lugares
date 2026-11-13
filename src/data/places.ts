@@ -1,7 +1,8 @@
+import { coastalPlaces } from "./coastal-places.ts";
 import type { Place } from "../domain.ts";
 
 // Durations and map pins are editorial estimates. Confirm opening conditions with each official source.
-export const places: Place[] = [
+export const legacyPlaces: Place[] = [
   {
     id: "vila-itororo",
     name: "Vila Itororó",
@@ -130,3 +131,7 @@ export const places: Place[] = [
       "https://www.gov.br/museus/pt-br/museus-ibram/museu-lasar-segall/acesso-a-informacao/perguntas-frequentes-museu-lasar-segall/",
   },
 ];
+
+// Keep legacy IDs available so existing favorites, routes and visits survive the new focus.
+export const places: Place[] = [...coastalPlaces, ...legacyPlaces];
+export { coastalPlaces };

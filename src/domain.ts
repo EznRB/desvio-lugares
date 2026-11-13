@@ -1,10 +1,11 @@
-export type Category = "natureza" | "cultura" | "arquitetura";
+export type City = "Caraguatatuba" | "São Sebastião" | "Ubatuba" | "Ilhabela";
+export type Category = "praia" | "natureza" | "cultura" | "arquitetura";
 export interface Place {
   id: string;
   name: string;
   category: Category;
   neighborhood: string;
-  city: "São Paulo";
+  city: City | "São Paulo";
   description: string;
   story: string;
   address: string;
@@ -38,6 +39,7 @@ export function filterPlaces(
   filters: {
     query?: string;
     category?: Category | "todos";
+    city?: City | "todos";
     onlyFree?: boolean;
   } = {},
 ): Place[] {
@@ -47,10 +49,13 @@ export function filterPlaces(
       (!filters.category ||
         filters.category === "todos" ||
         place.category === filters.category) &&
+      (!filters.city ||
+        filters.city === "todos" ||
+        place.city === filters.city) &&
       (!filters.onlyFree || place.free) &&
       (!query ||
         normalize(
-          [place.name, place.neighborhood, ...place.tags].join(" "),
+          [place.name, place.neighborhood, place.city, ...place.tags].join(" "),
         ).includes(query)),
   );
 }
@@ -89,7 +94,7 @@ export function buildRouteLink(
     return `${place.latitude},${place.longitude}`;
   });
   // No origin asks Google Maps to use the visitor's current location.
-  let result = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(points.at(-1)!)}&travelmode=walking`;
+  let result = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(points.at(-1)!)}&travelmode=driving`;
   if (points.length > 1)
     result += `&waypoints=${encodeURIComponent(points.slice(0, -1).join("|"))}`;
   return result;

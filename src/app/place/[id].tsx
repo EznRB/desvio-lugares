@@ -11,7 +11,7 @@ import {
 import { router, useLocalSearchParams } from "expo-router";
 import { places } from "../../data/places";
 import { distanceKm, type Place, type AppData } from "../../domain";
-import { cover } from "../../images";
+import { cover, photoCaption } from "../../images";
 import { useData } from "../../store";
 import { Page, Heading, Button, colors, s } from "../../components/ui";
 import { capture, locate, tactile } from "../../native";
@@ -211,7 +211,7 @@ export default function PlaceDetail() {
         />
       </View>
       <Heading
-        eyebrow={`${place.category} · ${place.neighborhood}`}
+        eyebrow={`${place.city} · ${place.category} · ${place.neighborhood}`}
         title={place.name}
         subtitle={place.description}
       />
@@ -223,9 +223,7 @@ export default function PlaceDetail() {
           borderRadius: 12,
         }}
       />
-      <Text style={[s.fine, { marginTop: 8 }]}>
-        Fotografia de arquivo do local · créditos no rodapé.
-      </Text>
+      <Text style={[s.fine, { marginTop: 8 }]}>{photoCaption(place.id)}</Text>
       <View
         style={{
           flexDirection: width < 900 ? "column" : "row",

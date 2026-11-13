@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Image, Pressable, Text, View } from "react-native";
 import { router } from "expo-router";
 import { useData } from "../store";
-import { cover } from "../images";
+import { cover, contextualCaption } from "../images";
 import type { Place } from "../domain";
 import { colors, s } from "./ui";
 import { tactile } from "../native";
@@ -79,6 +79,9 @@ export default function PlaceCard({ place }: { place: Place }) {
           </Text>
         </Pressable>
       </View>
+      {contextualCaption(place.id) && (
+        <Text style={s.fine}>{contextualCaption(place.id)}</Text>
+      )}
       <Pressable
         accessibilityRole="link"
         onPress={() => router.push(`/place/${place.id}`)}
@@ -103,7 +106,8 @@ export default function PlaceCard({ place }: { place: Place }) {
           <Text style={{ color: colors.green, fontSize: 25 }}>↗</Text>
         </View>
         <Text style={[s.fine, { marginTop: 5 }]}>
-          ◎ {place.neighborhood} · ~{place.duration} min de visita
+          ◎ {place.city} · {place.neighborhood} · ~{place.duration} min de
+          visita
         </Text>
         <Text
           numberOfLines={2}

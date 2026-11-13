@@ -16,8 +16,8 @@
     "web": {
       "bundler": "metro",
       "output": "single",
-      "name": "Desvio — a cidade fora do roteiro",
-      "description": "Descubra lugares, guarde seus favoritos e monte um passeio do seu jeito."
+      "name": "Desvio — o Litoral Norte fora do roteiro",
+      "description": "Explore Caraguatatuba, São Sebastião, Ubatuba e Ilhabela. Descubra lugares, favoritos e roteiros no Litoral Norte de São Paulo."
     },
     "plugins": [
       [

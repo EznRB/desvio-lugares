@@ -38,8 +38,8 @@ export default function PassportScreen() {
     <Page>
       <Heading
         eyebrow="MEMÓRIAS DE QUEM SAIU DO ÓBVIO"
-        title="Seu passaporte urbano."
-        subtitle="A cidade também fica guardada em quem passa por ela."
+        title="Seu passaporte do litoral."
+        subtitle="O litoral também fica guardado em quem passa por ele."
       />
       {!ready ? (
         <Text style={s.copy}>{error || "Abrindo suas memórias…"}</Text>
@@ -69,7 +69,7 @@ export default function PassportScreen() {
                 Seu diário fica salvo neste dispositivo.
               </Text>
             </View>
-            <Text style={s.stamp}>SÃO PAULO{"\n"}EXPLORADOR LOCAL</Text>
+            <Text style={s.stamp}>LITORAL NORTE{"\n"}EXPLORADOR LOCAL</Text>
           </View>
           {!visits.length ? (
             <View style={s.empty}>
@@ -106,7 +106,9 @@ export default function PassportScreen() {
                 >
                   <Text style={s.title}>{place.name} ↗</Text>
                 </Pressable>
-                <Text style={s.copy}>{place.neighborhood} · São Paulo</Text>
+                <Text style={s.copy}>
+                  {place.neighborhood} · {place.city}
+                </Text>
                 {visit.photoUri && (
                   <Image
                     source={{ uri: visit.photoUri }}

@@ -9,10 +9,11 @@ import {
   useWindowDimensions,
 } from "react-native";
 import { router } from "expo-router";
-import { places } from "../data/places";
-import { filterPlaces, type Category } from "../domain";
+import { coastalPlaces } from "../data/places";
+import { filterPlaces, type Category, type City } from "../domain";
 import { hero } from "../images";
 import { Page, Button, colors, s } from "../components/ui";
+import CityPicker from "../components/city-picker";
 import PlaceCard from "../components/place-card";
 import PlaceMap from "../components/place-map";
 import { useData } from "../store";
@@ -21,14 +22,15 @@ export default function Discover() {
   const small = width < 760;
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<Category | "todos">("todos");
+  const [city, setCity] = useState<City | "todos">("todos");
   const [onlyFree, setOnlyFree] = useState(false);
   const [map, setMap] = useState(false);
   const [selected, setSelected] = useState<string>();
   const input = useRef<React.ComponentRef<typeof TextInput>>(null);
   const { error } = useData();
   const filtered = useMemo(
-    () => filterPlaces(places, { query, category, onlyFree }),
-    [query, category, onlyFree],
+    () => filterPlaces(coastalPlaces, { query, category, city, onlyFree }),
+    [query, category, city, onlyFree],
   );
   const columns = width > 1100 ? 3 : width > 650 ? 2 : 1;
   return (
@@ -70,12 +72,12 @@ export default function Discover() {
               letterSpacing: -2,
             }}
           >
-            A cidade ainda{"\n"}tem{" "}
+            O litoral ainda{"\n"}tem{" "}
             <Text style={{ fontFamily: "Italic" }}>segredos.</Text>
           </Text>
           <Text style={[s.body, { maxWidth: 380 }]}>
-            Jardins entre prédios. Arte na próxima esquina. Lugares que fazem
-            você esquecer que está na mesma cidade.
+            A enseada depois da curva. A cultura caiçara. Descubra outros
+            caminhos entre a serra e o mar.
           </Text>
           <View style={{ alignItems: "flex-start" }}>
             <Button
@@ -168,12 +170,16 @@ export default function Discover() {
                 position: "absolute",
                 top: 15,
                 right: 15,
+                backgroundColor: "#173D33CC",
+                paddingHorizontal: 10,
+                paddingVertical: 4,
+                borderRadius: 20,
                 color: "white",
                 fontSize: 9,
               },
             ]}
           >
-            CENA EDITORIAL · IMAGEM GERADA POR IA
+            PRAIA DO JABAQUARA · ILHABELA
           </Text>
         </View>
       </View>
@@ -203,7 +209,7 @@ export default function Discover() {
         ))}
       </View>
       <View style={{ marginTop: 55, gap: 12 }}>
-        <Text style={s.eyebrow}>SÃO PAULO, POR OUTRO ÂNGULO</Text>
+        <Text style={s.eyebrow}>LITORAL NORTE, POR OUTRO ÂNGULO</Text>
         <View
           style={{
             flexDirection: "row",
@@ -237,6 +243,7 @@ export default function Discover() {
                 key={String(value)}
                 accessibilityRole="button"
                 accessibilityState={{ selected: map === value }}
+                aria-pressed={map === value}
                 onPress={() => setMap(value)}
                 style={{
                   paddingHorizontal: 15,
@@ -259,8 +266,15 @@ export default function Discover() {
           </View>
         </View>
         <Text style={s.body}>
-          Lugares reais, escolhidos para sair do automático.
+          Praias, natureza e cultura em quatro cidades.
         </Text>
+        <CityPicker
+          city={city}
+          onChange={(value) => {
+            setCity(value);
+            setSelected(undefined);
+          }}
+        />
         <View
           style={{
             flexDirection: small ? "column" : "row",
@@ -291,6 +305,7 @@ export default function Discover() {
           <Pressable
             accessibilityRole="checkbox"
             accessibilityState={{ checked: onlyFree }}
+            aria-checked={onlyFree}
             onPress={() => setOnlyFree(!onlyFree)}
             style={{
               padding: 16,
@@ -318,6 +333,7 @@ export default function Discover() {
           {(
             [
               ["todos", "Todos os lugares"],
+              ["praia", "Praias"],
               ["cultura", "Cultura & arte"],
               ["natureza", "Um pouco de verde"],
               ["arquitetura", "Arquitetura"],
@@ -326,6 +342,7 @@ export default function Discover() {
             <Pressable
               accessibilityRole="button"
               accessibilityState={{ selected: category === id }}
+              aria-pressed={category === id}
               key={id}
               onPress={() => setCategory(id)}
               style={{
@@ -350,7 +367,7 @@ export default function Discover() {
         <Text accessibilityLiveRegion="polite" style={s.fine}>
           {filtered.length}{" "}
           {filtered.length === 1 ? "lugar encontrado" : "lugares encontrados"} ·
-          fotografias dos próprios locais
+          curadoria do Litoral Norte
         </Text>
         {error && (
           <Text accessibilityRole="alert" style={s.body}>
@@ -368,6 +385,7 @@ export default function Discover() {
               onPress={() => {
                 setQuery("");
                 setCategory("todos");
+                setCity("todos");
                 setOnlyFree(false);
               }}
             />

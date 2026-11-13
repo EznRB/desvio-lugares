@@ -23,7 +23,7 @@ export default function PlaceMap({
   return (
     <View style={styles.paper}>
       <Text style={styles.eyebrow}>SEUS PONTOS DE PARTIDA</Text>
-      <Text style={styles.title}>A cidade, por outro caminho.</Text>
+      <Text style={styles.title}>O litoral, por outro caminho.</Text>
       <Text style={styles.help}>
         Escolha um lugar para explorar. Abra o mapa para ver a localização e
         traçar seu caminho.
@@ -45,7 +45,9 @@ export default function PlaceMap({
               </Text>
               <View style={{ flex: 1 }}>
                 <Text style={styles.name}>{place.name}</Text>
-                <Text style={styles.neighborhood}>{place.neighborhood}</Text>
+                <Text style={styles.neighborhood}>
+                  {place.city} · {place.neighborhood}
+                </Text>
               </View>
             </Pressable>
             <Pressable

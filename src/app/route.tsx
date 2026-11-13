@@ -11,6 +11,7 @@ import { router } from "expo-router";
 import { useData } from "../store";
 import { places } from "../data/places";
 import { buildRouteLink } from "../domain";
+import { ferrySource } from "../data/cities";
 import { cover } from "../images";
 import { Button, Heading, Page } from "../components/ui";
 
@@ -117,7 +118,7 @@ export default function RouteScreen() {
                       <Text style={s.name}>{place.name}</Text>
                     </Pressable>
                     <Text style={s.copy}>
-                      {place.neighborhood} · {place.duration} min
+                      {place.city} · {place.duration} min
                     </Text>
                     <View style={s.actions}>
                       <Pressable
@@ -155,9 +156,30 @@ export default function RouteScreen() {
                 </View>
               ))}
               <View style={s.footer}>
+                {stops.some((place) => place.city === "Ilhabela") && (
+                  <>
+                    <Text style={s.copy}>
+                      Ilhabela envolve travessia pelo canal para quem vem do
+                      continente. O roteiro não inclui filas, tarifas, horários
+                      ou restrições da balsa.
+                    </Text>
+                    <Button
+                      secondary
+                      label="Conferir travessia para Ilhabela ↗"
+                      onPress={() =>
+                        void Linking.openURL(ferrySource).catch(() =>
+                          setMessage(
+                            "Não foi possível abrir as informações da travessia.",
+                          ),
+                        )
+                      }
+                    />
+                  </>
+                )}
                 <Text style={s.copy}>
-                  O Google Maps calcula o caminho a pé a partir da sua
-                  localização. Confira horários e condições antes de sair.
+                  O Google Maps calcula o trajeto de carro a partir da sua
+                  localização. Os tempos acima são apenas de visita, sem
+                  trânsito ou deslocamento. Confira os acessos antes de sair.
                 </Text>
                 <Button
                   label="Abrir roteiro no Google Maps ↗"

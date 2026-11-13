@@ -3,7 +3,7 @@ import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { router } from "expo-router";
 import { useData } from "../store";
 import { places } from "../data/places";
-import { cover } from "../images";
+import { cover, contextualCaption } from "../images";
 import { Button, Heading, Page } from "../components/ui";
 
 export default function SavedScreen() {
@@ -61,9 +61,14 @@ export default function SavedScreen() {
                       accessibilityLabel={place.name}
                     />
                     <View style={s.content}>
+                      {contextualCaption(place.id) && (
+                        <Text style={s.copy}>
+                          {contextualCaption(place.id)}
+                        </Text>
+                      )}
                       <Text style={s.category}>
                         {place.category.toUpperCase()} ·{" "}
-                        {place.neighborhood.toUpperCase()}
+                        {place.city.toUpperCase()}
                       </Text>
                       <Text style={s.title}>{place.name}</Text>
                       <Text numberOfLines={2} style={s.copy}>

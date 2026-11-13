@@ -112,7 +112,7 @@ export function Page({ children }: { children: React.ReactNode }) {
               ))}
             </View>
           )}
-          <Text style={s.location}>◎ SÃO PAULO, SP</Text>
+          <Text style={s.location}>◎ LITORAL NORTE, SP</Text>
         </View>
         <View
           style={{
@@ -126,7 +126,7 @@ export function Page({ children }: { children: React.ReactNode }) {
         </View>
         <View style={s.footer}>
           <Text style={s.logo}>↗ desvio</Text>
-          <Text style={s.body}>Um novo olhar para a mesma cidade.</Text>
+          <Text style={s.body}>Outros caminhos entre a serra e o mar.</Text>
           <Pressable
             accessibilityRole="link"
             onPress={() => router.push("/credits")}
@@ -136,8 +136,8 @@ export function Page({ children }: { children: React.ReactNode }) {
             </Text>
           </Pressable>
           <Text style={s.fine}>
-            Guia editorial independente · São Paulo{"\n"}Visite os canais
-            oficiais antes de sair. Respeite cada lugar.
+            Guia editorial independente · Litoral Norte de SP{"\n"}Visite os
+            canais oficiais antes de sair. Respeite cada lugar.
           </Text>
         </View>
       </ScrollView>

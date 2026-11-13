@@ -46,7 +46,7 @@ export default function PlaceMap({
         const instance = L.map(container.current, {
           scrollWheelZoom: false,
           zoomControl: true,
-        }).setView([-23.553, -46.653], 12);
+        }).setView([-23.66, -45.34], 12);
         map.current = instance;
         const tiles = L.tileLayer(
           "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -121,7 +121,7 @@ export default function PlaceMap({
         maxZoom: 14,
         animate: false,
       });
-    else instance.setView([-23.553, -46.653], 12);
+    else instance.setView([-23.66, -45.34], 12);
   }, [boundsKey, ready]);
 
   useEffect(() => {
@@ -147,7 +147,8 @@ export default function PlaceMap({
       {React.createElement("div", {
         ref: container,
         role: "region",
-        "aria-label": "Mapa interativo dos lugares em São Paulo",
+        "aria-label":
+          "Mapa interativo dos lugares no Litoral Norte de São Paulo",
         style: {
           height: "100%",
           width: "100%",
@@ -191,7 +192,7 @@ export default function PlaceMap({
           >
             {failed
               ? "O mapa não carregou. Recarregue a página e confira sua conexão."
-              : "Preparando outros caminhos por São Paulo…"}
+              : "Preparando outros caminhos pelo Litoral Norte…"}
           </Text>
         </View>
       )}

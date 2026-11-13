@@ -14,7 +14,7 @@ export default function Credits() {
       <Heading
         eyebrow="QUEM NOS AJUDOU A VER"
         title="Um olhar, muitos autores."
-        subtitle="Fotografias reais dos locais, com autoria e licenças abertas. São registros de arquivo; o espaço pode ter mudado."
+        subtitle="Fotografias reais com autoria e licenças abertas. A foto contextual de Caraguatatuba não representa a Praia da Mococa. São registros de arquivo."
       />
       {credits.map((item) => (
         <View
@@ -51,14 +51,15 @@ export default function Credits() {
       <View style={{ gap: 12, marginTop: 30 }}>
         <Text style={s.body}>
           Fotografias redimensionadas e convertidas para JPEG; a interface
-          recorta a exibição. A imagem da Vila Itororó e suas adaptações
-          conservam a licença CC BY-SA 4.0.
+          recorta a exibição. Fotografias com licença CC BY-SA e seus recortes
+          conservam a respectiva licença indicada acima.
         </Text>
         <Text style={s.body}>
-          A imagem de abertura é uma cena fictícia gerada por IA com OpenAI
-          ImageGen. Não representa um dos locais do catálogo. Mapas:
-          OpenStreetMap contributors e Leaflet (BSD-2-Clause). Fontes: DM Sans e
-          Cormorant Garamond (SIL Open Font License).
+          A imagem de abertura mostra a Praia do Jabaquara, em Ilhabela, por
+          Rafael Borges Mundim (CC BY-SA 4.0). As fotografias da capital
+          permanecem nos créditos do acervo anterior. Mapas: OpenStreetMap
+          contributors e Leaflet (BSD-2-Clause). Fontes: DM Sans e Cormorant
+          Garamond (SIL Open Font License).
         </Text>
         <Text style={s.fine}>
           Conteúdo editorial com fontes oficiais em cada lugar. Este é um guia

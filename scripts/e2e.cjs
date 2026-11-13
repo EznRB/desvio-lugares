@@ -39,65 +39,91 @@ const base = process.env.BASE_URL || "http://127.0.0.1:4175";
   };
   try {
     await page.goto(base, { waitUntil: "networkidle" });
-    await text("6 lugares encontrados");
+    await text("12 lugares encontrados");
     await noOverflow();
+    for (const city of [
+      "Caraguatatuba",
+      "São Sebastião",
+      "Ubatuba",
+      "Ilhabela",
+    ]) {
+      await button("Cidade: " + city);
+      await text("3 lugares encontrados");
+      assert.equal(
+        await page
+          .getByRole("button", { name: "Cidade: " + city, exact: true })
+          .getAttribute("aria-pressed"),
+        "true",
+      );
+      checks++;
+    }
+    await button("Todas as cidades");
+    await page.getByLabel("Buscar lugares").fill("sao sebastiao");
+    await text("3 lugares encontrados");
+    await button("Praias");
+    await text("2 lugares encontrados");
+    await button("Cidade: Ilhabela");
+    await text("Nenhum lugar com essa combinação");
+    await button("Limpar filtros");
+    await text("12 lugares encontrados");
     await page.getByLabel("Buscar lugares").fill("sao nao existe");
     await text("Nenhum lugar com essa combinação");
     await button("Limpar filtros");
-    await page.getByLabel("Buscar lugares").fill("pompeia");
+    await page.getByLabel("Buscar lugares").fill("prumirim");
     await text("1 lugar encontrado");
     await page
-      .getByRole("link", { name: "Conhecer Sesc Pompeia", exact: true })
+      .getByRole("link", { name: "Conhecer Praia do Prumirim", exact: true })
       .waitFor();
     checks++;
     await page.getByLabel("Buscar lugares").fill("");
     await page
       .getByRole("checkbox", { name: "Entrada gratuita", exact: false })
       .click();
-    await text("2 lugares encontrados");
+    await text("8 lugares encontrados");
     await button("Um pouco de verde");
     await text("Nenhum lugar com essa combinação");
     await button("Limpar filtros");
     await page
       .getByRole("button", {
-        name: "Salvar nos favoritos: Vila Itororó",
+        name: "Salvar nos favoritos: Praia da Mococa",
         exact: true,
       })
       .click();
     await nav("Favoritos");
-    await text("Vila Itororó");
+    await text("Praia da Mococa");
     await page.reload({ waitUntil: "networkidle" });
-    await text("Vila Itororó");
+    await text("Praia da Mococa");
     await nav("Descobrir");
     await page
-      .getByRole("link", { name: "Conhecer Vila Itororó", exact: true })
+      .getByRole("link", { name: "Conhecer Praia da Mococa", exact: true })
       .click();
     await button("Adicionar ao meu roteiro +");
     await button("✓ Remover do roteiro");
     await button("Adicionar ao meu roteiro +");
     await page
       .getByLabel("Sua lembrança da visita")
-      .fill("Um respiro no meio da cidade.");
+      .fill("Uma descoberta entre a serra e o mar.");
     await button("Registrar visita");
     await text("Descoberta guardada no seu passaporte.");
     await nav("Passaporte");
-    await text("Um respiro no meio da cidade.");
+    await text("Uma descoberta entre a serra e o mar.");
     await text("REGISTRO MANUAL · SEM GPS");
     await page.reload({ waitUntil: "networkidle" });
-    await text("Um respiro no meio da cidade.");
-    await page.goto(base + "/place/casa-das-rosas", {
+    await text("Uma descoberta entre a serra e o mar.");
+    await page.goto(base + "/place/ilhabela-vila", {
       waitUntil: "networkidle",
     });
     await button("Adicionar ao meu roteiro +");
     await nav("Meu roteiro");
     await text("02 PARADAS");
+    await text("Ilhabela envolve travessia pelo canal");
     await page
-      .getByRole("button", { name: "Subir Casa das Rosas", exact: true })
+      .getByRole("button", { name: "Subir Vila de Ilhabela", exact: true })
       .click();
     const saved = await page.evaluate(() =>
       JSON.parse(localStorage.getItem("desvio:v1")),
     );
-    assert.deepEqual(saved.route, ["casa-das-rosas", "vila-itororo"]);
+    assert.deepEqual(saved.route, ["ilhabela-vila", "caragua-mococa"]);
     checks++;
     const [popup] = await Promise.all([
       page.waitForEvent("popup"),
@@ -108,7 +134,7 @@ const base = process.env.BASE_URL || "http://127.0.0.1:4175";
     checks++;
     await page
       .getByRole("button", {
-        name: "Remover Vila Itororó do roteiro",
+        name: "Remover Praia da Mococa do roteiro",
         exact: true,
       })
       .click();
@@ -116,11 +142,11 @@ const base = process.env.BASE_URL || "http://127.0.0.1:4175";
     await nav("Descobrir");
     await button("Mapa");
     await page.locator(".leaflet-marker-icon").first().waitFor();
-    assert.equal(await page.locator(".leaflet-marker-icon").count(), 6);
+    assert.equal(await page.locator(".leaflet-marker-icon").count(), 12);
     checks++;
     await page.locator(".leaflet-marker-icon").first().click();
     await page
-      .getByRole("link", { name: "Conhecer Vila Itororó", exact: true })
+      .getByRole("link", { name: "Conhecer Praia da Mococa", exact: true })
       .waitFor();
     checks++;
     await button("Lista");
@@ -132,7 +158,7 @@ const base = process.env.BASE_URL || "http://127.0.0.1:4175";
     await noOverflow();
     await page
       .getByRole("button", {
-        name: "Remover visita a Vila Itororó",
+        name: "Remover visita a Praia da Mococa",
         exact: true,
       })
       .click();
@@ -143,12 +169,15 @@ const base = process.env.BASE_URL || "http://127.0.0.1:4175";
     await page.goto(base, { waitUntil: "networkidle" });
     await context.setOffline(true);
     await page
-      .getByRole("link", { name: "Conhecer Sesc Pompeia", exact: true })
+      .getByRole("link", {
+        name: "Conhecer Projeto Tamar Ubatuba",
+        exact: true,
+      })
       .click();
     await text("Um motivo para ir.");
     await button("Adicionar ao meu roteiro +");
     await nav("Meu roteiro");
-    await text("Sesc Pompeia");
+    await text("Projeto Tamar Ubatuba");
     await context.setOffline(false);
     checks++;
     const broken = await browser.newContext();
@@ -185,7 +214,7 @@ const base = process.env.BASE_URL || "http://127.0.0.1:4175";
     await dp.goto(base, { waitUntil: "networkidle" });
     await dp
       .getByRole("button", {
-        name: "Salvar nos favoritos: Vila Itororó",
+        name: "Salvar nos favoritos: Praia da Mococa",
         exact: true,
       })
       .click();
@@ -199,13 +228,13 @@ const base = process.env.BASE_URL || "http://127.0.0.1:4175";
     await dp.evaluate(() => (window.failSave = false));
     await dp
       .getByRole("button", {
-        name: "Salvar nos favoritos: Vila Itororó",
+        name: "Salvar nos favoritos: Praia da Mococa",
         exact: true,
       })
       .click();
     await dp
       .getByRole("button", {
-        name: "Remover dos favoritos: Vila Itororó",
+        name: "Remover dos favoritos: Praia da Mococa",
         exact: true,
       })
       .waitFor();
@@ -213,10 +242,51 @@ const base = process.env.BASE_URL || "http://127.0.0.1:4175";
       await dp.evaluate(
         () => JSON.parse(localStorage.getItem("desvio:v1")).favorites,
       ),
-      ["vila-itororo"],
+      ["caragua-mococa"],
     );
     checks++;
     await denied.close();
+    const prior = await browser.newContext();
+    await prior.addInitScript(() => {
+      if (localStorage.getItem("desvio:v1") === null)
+        localStorage.setItem(
+          "desvio:v1",
+          JSON.stringify({
+            version: 1,
+            favorites: ["vila-itororo"],
+            route: ["sesc-pompeia"],
+            visits: {
+              "vila-itororo": {
+                visitedAt: "2026-11-13T12:00:00Z",
+                note: "Memória da capital",
+                gpsVerified: false,
+              },
+            },
+          }),
+        );
+    });
+    const old = await prior.newPage();
+    await old.goto(base + "/saved", { waitUntil: "networkidle" });
+    await old
+      .getByRole("link", { name: "Conhecer Vila Itororó", exact: true })
+      .waitFor();
+    await old.goto(base + "/place/caragua-mococa", {
+      waitUntil: "networkidle",
+    });
+    await old
+      .getByRole("button", { name: "♡ Salvar nos favoritos", exact: true })
+      .click();
+    await old
+      .getByRole("button", { name: "♥ Remover dos favoritos", exact: true })
+      .waitFor();
+    const restored = await old.evaluate(() =>
+      JSON.parse(localStorage.getItem("desvio:v1")),
+    );
+    assert.deepEqual(restored.favorites, ["vila-itororo", "caragua-mococa"]);
+    assert.deepEqual(restored.route, ["sesc-pompeia"]);
+    assert.equal(restored.visits["vila-itororo"].note, "Memória da capital");
+    checks++;
+    await prior.close();
     assert.deepEqual(errors, []);
     console.log(JSON.stringify({ status: "passed", checks, errors, base }));
   } catch (error) {
