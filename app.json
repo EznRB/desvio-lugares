@@ -1,0 +1,45 @@
+{
+  "expo": {
+    "name": "Desvio",
+    "slug": "desvio-lugares",
+    "scheme": "desvio",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.eznrb.desvio"
+    },
+    "android": {
+      "package": "com.eznrb.desvio"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "single",
+      "name": "Desvio — a cidade fora do roteiro",
+      "description": "Descubra lugares, guarde seus favoritos e monte um passeio do seu jeito."
+    },
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "asyncRoutes": false
+        }
+      ],
+      "expo-font",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "O Desvio usa sua localização apenas para conferir a proximidade de uma visita."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "cameraPermission": "O Desvio usa a câmera para guardar uma foto no seu passaporte pessoal.",
+          "microphonePermission": false
+        }
+      ]
+    ]
+  }
+}

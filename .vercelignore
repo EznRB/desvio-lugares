@@ -1,0 +1,12 @@
+node_modules
+.git
+.expo
+logs
+tmp
+dist-android
+dist-all
+docs
+tests
+.env*
+
+dist

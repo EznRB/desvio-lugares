@@ -1,0 +1,15 @@
+node_modules/
+.expo/
+dist/
+dist-all/
+logs/
+tmp/
+.vercel/
+.env*
+!.env.example
+expo-env.d.ts
+*.tsbuildinfo
+/ios
+/android
+dist-android/
+.vercel
