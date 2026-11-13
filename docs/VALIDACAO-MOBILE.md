@@ -36,3 +36,19 @@ Abrir a página inicialmente online; depois verificar favoritos, roteiro e passa
 - [ ] Acessibilidade e teclado verificados.
 - [ ] Screenshots reais identificados por plataforma.
 - [ ] Problemas encontrados documentados com reprodução, correção e reteste.
+
+
+## Casos adicionais da especialização Litoral Norte
+
+A versão regional aprovou 44 verificações E2E remotas sem erros de página; instalação limpa, nove testes, TypeScript, lint, Expo Doctor e exportações Android/web passaram na CI. Evidências em VERIFICACAO.md. Isso não marca os casos físicos como aprovados; viewport mobile continua sendo navegador.
+
+| Caso | Ação | Resultado esperado |
+| --- | --- | --- |
+| R01 | Alternar as quatro cidades e combinar busca/categoria/Praias/gratuito | Três entradas por cidade sem filtro; combinação coerente; resumo da cidade correto |
+| R02 | Buscar nome de município com/sem acento e voltar ao catálogo | Busca inclui cidade; não mantém filtro invisível incoerente |
+| R03 | Abrir favorito, roteiro, passaporte e link antigos de São Paulo | Dados preservados como acervo; entradas antigas fora do Descobrir regional |
+| R04 | Montar roteiro regional com Ilhabela e abrir mapas | Modo carro; aviso de balsa claro; sem promessa de fila/horário/rota precisa |
+| R05 | Conferir fotos e créditos dos 12 lugares e hero | Jabaquara, Ilhabela, na abertura; Mococa contextual explicitamente legendada; fontes/licenças acessíveis |
+| R06 | Usar GPS perto de pin editorial aproximado | Proximidade não tratada como acesso exato, comprovação de identidade ou garantia de segurança |
+
+Balneabilidade, condições de trilhas, chuva, travessia e ingresso exigem consulta às fontes responsáveis. Não inferir segurança de banho a partir de categoria gratuita ou fotografia. Registros de arquivo não garantem acesso atual.

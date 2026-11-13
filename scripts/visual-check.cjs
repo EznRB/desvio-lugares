@@ -1,2 +1,20 @@
-const {chromium}=require('playwright-core');const fs=require('node:fs');const assert=require('node:assert/strict');
-(async()=>{const browser=await chromium.launch({executablePath:process.env.CHROME_PATH||'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});const page=await browser.newPage({viewport:{width:1440,height:1000},deviceScaleFactor:1});const errors=[];page.on('pageerror',e=>errors.push(e.message));const base=process.env.BASE_URL||'http://127.0.0.1:4175';fs.mkdirSync('docs/screenshots',{recursive:true});await page.goto(base,{waitUntil:'networkidle'});await page.getByLabel('Buscar lugares').waitFor();await page.screenshot({path:'docs/screenshots/desktop.png'});await page.getByText('Seu próximo achado.',{exact:true}).evaluate(el=>el.scrollIntoView({block:'start'}));await page.screenshot({path:'docs/screenshots/desktop-catalog.png'});await page.setViewportSize({width:390,height:844});await page.reload({waitUntil:'networkidle'});await page.screenshot({path:'docs/screenshots/mobile.png'});await page.getByText('Seu próximo achado.',{exact:true}).evaluate(el=>el.scrollIntoView({block:'start'}));await page.screenshot({path:'docs/screenshots/mobile-catalog.png'});assert.deepEqual(errors,[]);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);console.log(JSON.stringify({base,title:await page.title(),screenshots:4,errors,overflow:false}));await browser.close();})().catch(e=>{console.error(e);process.exitCode=1;});
+const {chromium}=require('playwright-core');
+const fs=require('node:fs');
+const assert=require('node:assert/strict');
+(async()=>{
+ const browser=await chromium.launch({executablePath:process.env.CHROME_PATH||'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
+ const page=await browser.newPage({viewport:{width:1440,height:1000},deviceScaleFactor:1});
+ const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ const base=process.env.BASE_URL||'http://127.0.0.1:4175';fs.mkdirSync('docs/screenshots',{recursive:true});
+ await page.goto(base,{waitUntil:'networkidle'});await page.getByLabel('Buscar lugares').waitFor();
+ await page.screenshot({path:'docs/screenshots/desktop.png'});
+ const catalog=()=>page.getByText('12 lugares encontrados',{exact:false}).evaluate(el=>el.scrollIntoView({block:'start'}));
+ await catalog();await page.screenshot({path:'docs/screenshots/desktop-catalog.png'});
+ await page.setViewportSize({width:390,height:844});await page.reload({waitUntil:'networkidle'});
+ await page.screenshot({path:'docs/screenshots/mobile.png'});
+ await page.getByText('QUAL É O SEU TRECHO DO LITORAL?',{exact:true}).evaluate(el=>el.scrollIntoView({block:'start'}));
+ await page.screenshot({path:'docs/screenshots/mobile-cities.png'});
+ await catalog();await page.screenshot({path:'docs/screenshots/mobile-catalog.png'});
+ assert.deepEqual(errors,[]);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+ console.log(JSON.stringify({base,title:await page.title(),screenshots:5,errors,overflow:false}));await browser.close();
+})().catch(e=>{console.error(e);process.exitCode=1;});

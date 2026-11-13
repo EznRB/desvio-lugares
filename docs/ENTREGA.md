@@ -10,19 +10,19 @@
 
 **Equipe:** identificação pendente
 
-Projeto acadêmico original de guia pessoal de São Paulo, com Expo e React Native. Campos de equipe e QA físico precisam de fatos fornecidos pelos alunos; não são resultados presumidos. A responsabilidade pelo código, inclusive apoio de IA, é da equipe.
+Projeto acadêmico original de guia pessoal do Litoral Norte, com Expo e React Native. Campos de equipe e QA físico precisam de fatos fornecidos pelos alunos; não são resultados presumidos. A responsabilidade pelo código, inclusive apoio de IA, é da equipe.
 
 ## 1. Motivação do projeto
 
 ### Problema e público
 
-Estudantes e moradores querem um passeio cultural ou ao ar livre sem navegar por listas enormes. Reunir história curta, endereço, fonte oficial e uma lista pessoal ajuda a decidir e lembrar o que visitar. O catálogo inicial tem seis lugares reais; não pretende representar toda São Paulo nem prometer atrações secretas.
+Estudantes e moradores querem um passeio cultural ou ao ar livre sem navegar por listas enormes. Reunir história curta, endereço, fonte oficial e uma lista pessoal ajuda a decidir e lembrar o que visitar. A descoberta reúne 12 lugares reais: três em cada cidade de Caraguatatuba, São Sebastião, Ubatuba e Ilhabela. Não pretende representar todos os atrativos nem prometer lugares secretos.
 
-**Persona ilustrativa, não entrevistada:** Júlia, 21 anos, estudante em São Paulo, tem algumas horas livres no fim de semana e quer combinar dois espaços culturais. Deseja guardar opções, ordenar paradas e anotar lembranças sem criar conta. Essa hipótese precisa de validação com usuários; não há ganho de tempo medido.
+**Persona ilustrativa, não entrevistada:** Júlia, 21 anos, estudante e moradora de Caraguatatuba, quer conhecer a própria cidade e planejar um passeio nas cidades vizinhas de São Sebastião, Ubatuba ou Ilhabela. Deseja guardar opções, ordenar paradas e anotar lembranças sem criar conta. Essa hipótese precisa de validação com usuários; não há ganho de tempo medido.
 
 ### Proposta de valor e mobile
 
-“Faça um pequeno desvio na rotina.” Descoberta editorial, favoritos, roteiro de até seis paradas e passaporte privado com notas de até 280 caracteres compõem um fluxo individual. O celular acompanha o passeio: GPS oferece proximidade/verificação de posição, câmera registra lembrança e haptics confirma interação. Visita manual tem identificação própria e não simula GPS.
+“Faça um pequeno desvio na rotina.” Escolha de cidade, busca por nome/bairro/cidade, categoria Praias e descoberta editorial, favoritos, roteiro de até seis paradas e passaporte privado com notas de até 280 caracteres compõem um fluxo individual. O celular acompanha o passeio: GPS oferece proximidade/verificação de posição, câmera registra lembrança e haptics confirma interação. Visita manual tem identificação própria e não simula GPS.
 
 A camada mobile foi criada para este projeto. A versão web tem mapa Leaflet/OSM e layout editorial; não substitui os recursos físicos nativos. Assets são empacotados no aplicativo. Web exige primeira abertura online e não garante hard reload offline; mapas e links externos dependem de conexão. Sem backend, conta ou sincronização: o recorte evita coleta remota desnecessária e simplifica uso individual. Limpar armazenamento/desinstalar pode apagar dados.
 
@@ -71,7 +71,7 @@ Durante a revisão, foi encontrado risco de salvar nota antiga quando o texto er
 - Validar busca combinada, acentos, coordenadas, unicidade/limite do roteiro e evolução dos IDs do catálogo em regras puras.
 - Persistir foto capturada na área do app e tratar cancelamento/recusa sem perder notas; URI temporária não comprova persistência.
 - Diferenciar distância aproximada em linha reta de navegação real e visita manual de confirmação por GPS.
-- Distinguir hero fictícia gerada por IA de fotografias documentais de arquivo, com créditos e licenças; apresentar preços condicionais com honestidade editorial.
+- Identificar a hero regional real de Jabaquara, Ilhabela e fotos documentais de arquivo, com créditos e licenças; apresentar preços condicionais com honestidade editorial.
 
 Os itens preventivos são critérios de investigação, separados dos obstáculos reais relatados acima. Resultados concretos de implementação/QA devem ser acrescentados pelo responsável com evidência; não há teste físico aprovado nesta versão.
 
@@ -100,14 +100,14 @@ Atlas Obscura combina mapa, histórias, listas e registro de lugares visitados. 
 
 | Dimensão | Google Maps | Atlas Obscura | Desvio |
 | --- | --- | --- | --- |
-| Recorte | Navegação/descoberta ampla | Descobertas e histórias | Seis lugares paulistanos |
+| Recorte | Navegação/descoberta ampla | Descobertas e histórias | 12 lugares do Litoral Norte |
 | Guardar | Listas | Listas e visitados | Favoritos/roteiro/passaporte |
-| Navegação | Serviço próprio anunciado | Mapa anunciado | Link Google Maps; distância aproximada |
+| Navegação | Serviço próprio anunciado | Mapa anunciado | Google Maps em modo carro |
 | Dados pessoais | Serviço de conta | Recursos de comunidade | Locais, sem conta/backend |
 
 ### Críticas públicas e limites
 
-**Atlas Obscura, Ashley Arnold, 02/09/2026:** uma avaliação na Google Play relata insatisfação com a cobertura de seu bairro parisiense. É opinião individual, não prova da cobertura atual em São Paulo. Consequência para o Desvio: comunicar claramente a dimensão reduzida do catálogo, sem prometer completude. [Avaliação exibida na loja](https://play.google.com/store/apps/details?id=com.atlasobscura.android&hl=en_US).
+**Atlas Obscura, Ashley Arnold, 02/09/2026:** uma avaliação na Google Play relata insatisfação com a cobertura de seu bairro parisiense. É opinião individual, não prova da cobertura atual no Litoral Norte. Consequência para o Desvio: comunicar claramente a dimensão reduzida e regional do catálogo, sem prometer completude. [Avaliação exibida na loja](https://play.google.com/store/apps/details?id=com.atlasobscura.android&hl=en_US).
 
 **Atlas Obscura, Jeffrey Carpenter, 29/10/2022:** critica a busca por cidade. O desenvolvedor responde em 27/01/2023 que adicionou busca por localização. O relato é histórico e não demonstra falha atual. Consequência: testar busca e clareza do recorte. [Avaliação e resposta na loja](https://play.google.com/store/apps/details?id=com.atlasobscura.android&hl=en_US).
 
@@ -127,7 +127,7 @@ O diferencial pretendido é um fluxo pessoal curto, em português, com curadoria
 | Recursos nativos | 15% | GPS, câmera, haptics e persistência demonstrados em aparelho |
 | GitHub/README | 10% | Instruções, galeria real, .gitignore e commits reais do grupo |
 
-Prazo do enunciado: 07/12 às 23h59; confirmar o ano com o professor. Entregar link de repositório acessível e PDF. Publicação confirmada: [aplicação HTTPS](https://desvio-lugares.vercel.app) e [repositório público](https://github.com/EznRB/desvio-lugares). Rotas de início, lugar, roteiro, passaporte e créditos responderam HTTP 200; o fluxo remoto aprovou 30 verificações, sem erros de página. Evidências e versão verificada em VERIFICACAO.md. Participação real da equipe e hardware físico continuam pendentes.
+Prazo do enunciado: 07/12 às 23h59; confirmar o ano com o professor. Entregar link de repositório acessível e PDF. Publicação confirmada: [aplicação HTTPS](https://desvio-lugares.vercel.app) e [repositório público](https://github.com/EznRB/desvio-lugares). Rotas de início, lugar, roteiro, passaporte e créditos responderam HTTP 200; o fluxo regional remoto aprovou 44 verificações, sem erros de página. Evidências e versão verificada em VERIFICACAO.md. Participação real da equipe e hardware físico continuam pendentes.
 
 - [ ] Preencher integrantes, matrículas, GitHub e responsabilidades reais.
 - [ ] Validar aparelho físico conforme VALIDACAO-MOBILE.md.
@@ -138,4 +138,13 @@ Prazo do enunciado: 07/12 às 23h59; confirmar o ano com o professor. Entregar l
 
 ## Honestidade visual e fontes
 
-Hero gerada por IA é cena fictícia. As seis fotografias Wikimedia Commons retratam os locais identificados, mas são registros de arquivo e não garantem estado atual. Créditos, autores, datas, licenças e adaptações constam em CREDITOS-FOTOS.md e na tela Créditos acessível pelo rodapé; os dados também ficam em src/data/credits.ts. Fontes oficiais e limites de preços/acesso estão em REFERENCIAS.md. Fotografias de terceiros não comprovam uma visita do usuário. Não inventar entrevistas, reviews ou resultados de hardware.
+A abertura regional usa fotografia real de Jabaquara, Ilhabela. Das 12 imagens regionais, onze mostram o lugar exato; Mococa usa imagem contextual de Caraguatatuba, identificada por legenda. Créditos, autores, licenças e adaptações ficam em CREDITOS-LITORAL.md e src/data/coastal-photos.ts. São registros de arquivo, sem garantia de estado atual. Créditos do acervo anterior continuam em CREDITOS-FOTOS.md. Fontes oficiais e limites de preços/acesso estão em REFERENCIAS.md. Fotografias de terceiros não comprovam uma visita do usuário. Não inventar entrevistas, reviews ou resultados de hardware.
+
+
+## Especialização regional e continuidade
+
+O seletor de cidade delimita a descoberta e a busca inclui município. Roteiros abrem Google Maps em modo carro, com aviso de balsa quando incluem Ilhabela; o aplicativo não calcula filas, tarifas ou condições atuais da travessia. Pinos editoriais aproximados não representam entrada de trilha nem acesso GPS preciso. O passaporte verifica proximidade com essas limitações, sem certificar identidade ou segurança do local.
+
+As seis entradas anteriores de São Paulo continuam no acervo por compatibilidade com links e dados pessoais, mas ficam fora do Descobrir regional. Preservar favoritos, roteiros e passaporte evita perda de histórico na evolução do catálogo. FONTES-LITORAL.md documenta as fontes e condições variáveis: gratuidades de praias referem-se somente à areia; serviços/transporte são independentes. Não são informados horários ou balneabilidade em tempo real.
+
+A versão regional aprovou 44 verificações E2E remotas sem erros, incluindo detalhes das quatro cidades. Deploy 086b6bd Ready: [implantação](https://desvio-lugares-mm054oz75-eznrbs-projects.vercel.app). [CI aprovada](https://github.com/EznRB/desvio-lugares/actions/runs/43529913243): instalação limpa, nove testes, TypeScript, lint, Expo Doctor e exportações Android/web. Evidências em VERIFICACAO.md. Equipe e hardware físico permanecem pendentes. O benchmark mantém a pesquisa anterior, sem superioridade regional comprovada.

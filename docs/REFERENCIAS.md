@@ -1,8 +1,16 @@
-# Referências e créditos - Desvio
+# Referências e créditos - Desvio regional
+
+## Litoral Norte
+
+O catálogo atual possui 12 lugares, três por cidade de Caraguatatuba, São Sebastião, Ubatuba e Ilhabela. Fontes primárias e notas editoriais estão em [FONTES-LITORAL.md](FONTES-LITORAL.md); o catálogo está em src/data/coastal-places.ts. Pinos são aproximados e durações são estimativas, sem garantia de acesso preciso, horário atual, gratuidade de todos os serviços ou balneabilidade.
+
+As fotos regionais e hero de Jabaquara, Ilhabela têm créditos em [CREDITOS-LITORAL.md](CREDITOS-LITORAL.md) e src/data/coastal-photos.ts, arquivos em assets/coast. Onze fotos são do lugar exato; Mococa usa fotografia contextual de Caraguatatuba com legenda explícita. Manter autores, licenças e descrição dos recortes. Fotografias são registros de arquivo.
+
+O conteúdo abaixo preserva referências históricas do acervo de São Paulo e benchmark já pesquisado. O acervo fica fora da descoberta regional, mas links/dados pessoais anteriores permanecem disponíveis.
 
 Consulta de benchmark: 13/11/2026. O catálogo usa fontes oficiais ligadas a cada entrada em `src/data/places.ts`; informações editoriais não são serviço em tempo real.
 
-## Fontes dos lugares
+## Fontes do acervo anterior de São Paulo
 
 | Lugar | Fonte oficial |
 | --- | --- |
@@ -28,7 +36,7 @@ A consulta verificou recursos anunciados e avaliações públicas, sem teste com
 
 ## Fotografias reais e imagem de abertura
 
-Hero `assets/hero.png`: composição fictícia produzida com IA para identidade visual, sem representar um local real. As seis imagens Unsplash de referência foram integralmente substituídas por fotografias dos próprios locais, identificadas no Wikimedia Commons. São registros de arquivo; não garantem aparência, conservação ou acesso atuais.
+A antiga hero `assets/hero.png` era composição fictícia produzida com IA; foi substituída na experiência regional pela foto de Jabaquara, Ilhabela. As seis imagens Unsplash de referência foram integralmente substituídas por fotografias dos próprios locais, identificadas no Wikimedia Commons. São registros de arquivo; não garantem aparência, conservação ou acesso atuais.
 
 Consulte [CREDITOS-FOTOS.md](CREDITOS-FOTOS.md) para arquivo original, autoria, data, licença e adaptações. Os mesmos registros são mantidos em `src/data/credits.ts` e na tela Créditos, acessível pelo rodapé. Arquivos foram redimensionados/convertidos para JPEG e a interface pode recortar sua exibição. Manter atribuições e condições de cada licença ao redistribuir.
 
@@ -46,3 +54,7 @@ Consulte [CREDITOS-FOTOS.md](CREDITOS-FOTOS.md) para arquivo original, autoria, 
 [Expo](https://docs.expo.dev/) · [React Native](https://reactnative.dev/) · [Expo Router](https://docs.expo.dev/router/introduction/) · [Leaflet](https://leafletjs.com/) · [OpenStreetMap e atribuição](https://www.openstreetmap.org/copyright).
 
 Leaflet é usado somente na web. O mapa deve exibir atribuição OpenStreetMap; não presumir licença livre de obrigações para tiles ou disponibilidade offline. Google Maps é serviço externo de navegação, não backend do passaporte. Fontes/fontes tipográficas e bibliotecas devem conservar suas licenças de distribuição.
+
+## Evidência de integração regional
+
+Catálogo regional e interface validados em 44 verificações E2E remotas sem erros de página. Publicação HTTPS em https://desvio-lugares.vercel.app; comandos, CI e versão em VERIFICACAO.md. Essa evidência verifica integração, não substitui confirmação de condições atuais dos atrativos nem QA de hardware físico.
